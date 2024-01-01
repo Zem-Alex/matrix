@@ -62,13 +62,15 @@
   ```
 
   Select operation on Matrix:
-  \1\) Matrix addition
-  \2\) Matrix negation
-  \3\) Transpose the first matrix
-  \4\) Transpose the second matrix
-  \5\) Matrix multiplication
-  \6\) Matrix determination
-  \0\) Exit
+  ```
+  1\) Matrix addition
+  2\) Matrix negation
+  3\) Transpose the first matrix
+  4\) Transpose the second matrix
+  5\) Matrix multiplication
+  6\) Matrix determination
+  0\) Exit
+  ```
 
   >5
 
