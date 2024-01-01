@@ -42,9 +42,10 @@
   ```
 
   Porgam:
-
+  ```
   Size of 1 Matrix: 2 * 4
   Size of 2 matrix: 4 * 2
+  ```
 
   First matrix:
   ```
