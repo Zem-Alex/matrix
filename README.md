@@ -17,7 +17,7 @@
 
 * The size of the matrix in the file is determined automatically by the program, it is not specified by the user and is not recorded in the matrix file itself
 
-* Supported operations:
+- Supported operations:
   - addition of two matrices
   - subtraction of one matrix from another
   - multiplication of two matrices
