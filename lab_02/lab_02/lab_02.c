@@ -8,108 +8,8 @@
 
 #define ERR_ALLOC_MEM "ERROR: couldn't allocate memory\nEXIT WITH ERROR CODE 1\n"
 
-bool next_permutation(int* array, int size) {
-    int i = size - 1;
-    while (i > 0 && array[i - 1] >= array[i]) {
-        i--;
-    }
-    if (i <= 0) {
-        return false;
-    }
-
-    int j = size - 1;
-    while (array[j] <= array[i - 1]) {
-        j--;
-    }
-
-    // Меняем элементы i-1 и j местами
-    int temp = array[i - 1];
-    array[i - 1] = array[j];
-    array[j] = temp;
-
-    // Разворачиваем оставшуюся часть массива
-    j = size - 1;
-    while (i < j) {
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-        i++;
-        j--;
-    }
-
-    return true;
-}
-
-// Функция для создания подматрицы
-int** createSubmatrix(int** matrix, int rows, int col1, int col2, int col3, int col4) {
-    int** submatrix = (int**)malloc(4 * sizeof(int*));
-    for (int i = 0; i < 4; ++i) {
-        submatrix[i] = (int*)malloc(4 * sizeof(int));
-        submatrix[i][0] = matrix[i][col1];
-        submatrix[i][1] = matrix[i][col2];
-        submatrix[i][2] = matrix[i][col3];
-        submatrix[i][3] = matrix[i][col4];
-    }
-
-    return submatrix;
-}
-
-// Функция для вывода матрицы
-void printMatrix(int** matrix, int rows, int cols) {
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-// Функция для освобождения памяти, выделенной под матрицу
-void freeMatrix(int** matrix, int rows) {
-    for (int i = 0; i < rows; ++i) {
-        free(matrix[i]);
-    }
-    free(matrix);
-}
-
-// Основная функция для генерации и вывода всех перестановок
-void permutation(int** arr, int height, FILE* input1) {
-    int coo = 1;
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
-            fscanf_s(input1, "%d", &arr[i][j]);
-        }
-    }
-    int size = 5;
-    int* colIndices = (int*)malloc(size * sizeof(int));
-    for (int i = 0; i < size; ++i) {
-        colIndices[i] = i;
-    }
-
-    do {
-        printf("Permutation %d:\n", coo);
-        int** submatrix = createSubmatrix(arr, height, colIndices[0], colIndices[1], colIndices[2], colIndices[3]);
-        printMatrix(submatrix, height, 4);
-
-        int det = determinantOfMatrix(submatrix, 4, input1);
-
-        printf("Determinant: %d\n", det);
-
-        // Освобождение памяти под submatrix
-        freeMatrix(submatrix, height);
-        coo++;
-    } while (next_permutation(colIndices, size));
-
-    // Освобождение памяти
-    free(colIndices);
-}
-
-
-
-int main(void) {
+int main(void) 
+{
     FILE* input1 = 0, * input2 = 0, * output = 0;
     //
     if (fopen_s(&input1, "i1.txt", "r") || fopen_s(&input2, "i2.txt", "r"))
@@ -123,9 +23,8 @@ int main(void) {
     long long longn = 0;
     while (fscanf_s(input2, "%lld", &longn) != EOF)
     {
-        if (longn > 2147483647) {
+        if (longn > 2147483647) 
             return 3;
-        }
     }
     _fcloseall();
     //printf_s("\n%lld\n", longn);
