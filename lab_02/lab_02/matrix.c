@@ -69,12 +69,12 @@ void free2DArray(int** arr, int height)
     free(arr);
 }
 
-void SumMatrix(int height, int width, int height2, int width2, FILE* input1, FILE* input2, int** arr, int** arr2, int** arr3) 
+int SumMatrix(int height, int width, int height2, int width2, FILE* input1, FILE* input2, int** arr, int** arr2, int** arr3) 
 {
     if (width != width2 || height != height2)
     {
-        printf_s(" Invalid Matrix Size For This Operation! \n");
-        exit(1);
+        printf_s(" Invalid Matrix Size For This Operation! \n\n");
+        return 0;
     }
 
     scanMatrix(arr, height, width, input1);
@@ -84,35 +84,39 @@ void SumMatrix(int height, int width, int height2, int width2, FILE* input1, FIL
         for (int j = 0; j < width; j++)
             arr3[i][j] = arr2[i][j] + arr[i][j];
 
+    return 1;
 }
-void NegMatrix(int height, int width, int height2, int width2, FILE* input1, FILE* input2, int** arr, int** arr2, int** arr3)
+int NegMatrix(int height, int width, int height2, int width2, FILE* input1, FILE* input2, int** arr, int** arr2, int** arr3)
 {
     if (width != width2 || height != height2)
     {
-        printf_s(" Invalid Matrix Size For This Operation! \n");
-        exit(1);
+        printf_s(" Invalid Matrix Size For This Operation! \n\n");
+        return 0;
     }
 
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++)
             arr3[i][j] = arr[i][j] - arr2[i][j];
 
+    return 1;
 }
 
-void Transpose(int height, int width, FILE* file, int** arr, int** out) 
+int Transpose(int height, int width, FILE* file, int** arr, int** out)
 {
+
     for (int i = 0; i < width; i++)
         for (int j = 0; j < height; j++)
             out[i][j] = arr[j][i];
 
+    return 1;
 }
 
-void MultMAtrix(int height, int width, int height2, int width2, FILE* input1, FILE* input2, int** arr, int** arr2, int** arr3)
+int MultMAtrix(int height, int width, int height2, int width2, FILE* input1, FILE* input2, int** arr, int** arr2, int** arr3)
 {
     if (width != height2)
     {
-        printf_s(" Invalid Matrix Size For This Operation! ");
-        exit(1);
+        printf_s(" Invalid Matrix Size For This Operation! \n\n");
+        return 0;
     }
 
     for (int i = 0; i < height; i++)
@@ -123,6 +127,7 @@ void MultMAtrix(int height, int width, int height2, int width2, FILE* input1, FI
                 arr3[i][j] += arr[i][n] * arr2[n][j];
         }
 
+    return 1;
 }
 
 
@@ -321,8 +326,9 @@ void matrixSizeFromFiles(int* height, int* width, int* height2, int* width2, FIL
     *width = (probel + (*height)) / (*height);
     /// 
     int probel2 = 0, enter2 = 0;
+    flag = 0; max = 0; count = 0;
     char SYMBOL2 = 0;
-    count = 0;
+
     while (fscanf_s(input2, "%c", &SYMBOL2, 1) != EOF)
     {
         if (SYMBOL2 == ' ')
