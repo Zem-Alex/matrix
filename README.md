@@ -47,14 +47,18 @@
   Size of 2 matrix: 4 * 2
 
   First matrix:
+  ```
   1 2
   3 4
   5 6
   7 8
+ ```
 
   Second matrix:
+  ```
   1 2 3 4
   5 6 7 8
+  ```
 
   Select operation on Matrix:
   1) Matrix addition
@@ -68,7 +72,9 @@
   >5
 
   MULTIPLICATION of Matrices:
+  ```
   11 14 17 20
   23 30 37 44
   35 46 57 68
   47 62 77 92
+  ```
